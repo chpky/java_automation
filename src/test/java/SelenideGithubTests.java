@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -27,5 +28,15 @@ public class SelenideGithubTests {
         $(new ByAttribute("href","/selenide/selenide")).click();
         // убедиться что зашел в нужный репозиторий
         $("#repository-container-header a").shouldHave(text("selenide"));
+    }
+
+    @Test
+    void IsSolntsevFirstContributor() {
+        open("/selenide/selenide");
+        $("div.Layout-sidebar").$(byText("Contributors"))
+                .closest("h2").sibling(0)
+                    .$$("li").first()
+        .hover();
+        $(".Popover").shouldHave(text("Andrei Solntsev"));
     }
 }
