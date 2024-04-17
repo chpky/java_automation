@@ -1,20 +1,22 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.selector.ByAttribute;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static utils.TestConfig.SetConfig;
 
 
-public class SelenideGithubTests {
+public class GithubWebTests {
+
     @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://github.com";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = false;
+    static void SetUp() {
+        SetConfig("https://github.com");
     }
 
     @Test
@@ -38,5 +40,14 @@ public class SelenideGithubTests {
                     .$$("li").first()
         .hover();
         $(".Popover").shouldHave(text("Andrei Solntsev"));
+    }
+
+    @Test
+    @Description("Homework 4")
+    void HoverTest() {
+        open("/");
+        $(byTagAndText("button","Solutions")).hover();
+        $(byTagAndText("a","Enterprise")).click();
+        $(byTagAndText("span","Start a free trial")).shouldBe(visible);
     }
 }

@@ -7,14 +7,13 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static utils.TestConfig.SetConfig;
 
-public class Homework_2_Tests {
+public class Homework2Tests {
 
     @BeforeAll
-    static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "968x1080";
+    static void SetUp() {
+        SetConfig("https://demoqa.com");
     }
 
     @BeforeEach
