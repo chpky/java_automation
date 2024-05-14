@@ -2,6 +2,8 @@ plugins {
     id 'java'
 }
 
+def allureVersion = "2.27.0"
+def junit5Version = "5.10.2"
 group = 'ru.qa.school.core'
 version = '1.0-SNAPSHOT'
 
@@ -10,8 +12,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation (
+            "org.slf4j:slf4j-simple:2.0.12",
+            "com.codeborne:selenide:7.2.3",
+            "org.junit.jupiter:junit-jupiter-api:$junit5Version",
+            "org.junit.jupiter:junit-jupiter-engine:$junit5Version",
+            "org.junit.jupiter:junit-jupiter-params:$junit5Version",
+            "io.qameta.allure:allure-junit5:$allureVersion")
 }
 
 test {
