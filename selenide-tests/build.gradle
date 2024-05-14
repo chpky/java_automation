@@ -4,6 +4,8 @@ plugins {
 
 def allureVersion = "2.27.0"
 def junit5Version = "5.10.2"
+group = 'ru.qa.school.selenide'
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()

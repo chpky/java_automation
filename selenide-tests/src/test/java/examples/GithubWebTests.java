@@ -1,4 +1,5 @@
-import com.codeborne.selenide.Configuration;
+package examples;
+
 import com.codeborne.selenide.selector.ByAttribute;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.BeforeAll;

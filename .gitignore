@@ -78,3 +78,4 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 /allure-results/
+/selenide-tests/allure-results/
