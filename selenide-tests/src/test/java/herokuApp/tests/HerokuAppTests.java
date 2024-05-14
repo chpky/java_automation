@@ -1,4 +1,6 @@
-import com.codeborne.selenide.DragAndDropOptions;
+package herokuApp.tests;
+
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -28,5 +30,11 @@ public class HerokuAppTests {
         $("#column-a").dragAndDrop(to($("#column-b")));
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
+    }
+
+    @Test
+    @Description("remove elements ")
+    void RemoveElementsTest() {
+        open("/add_remove_elements/");
     }
 }
