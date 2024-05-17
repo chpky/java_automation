@@ -1,4 +1,4 @@
-package examples;
+package com.github;
 
 import com.codeborne.selenide.selector.ByAttribute;
 import io.qameta.allure.Description;
@@ -10,14 +10,14 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static utils.TestConfig.SetConfig;
+import static com.demoQA.practiceForm.utils.TestBaseDemoQA.SetConfig;
 
 
 public class GithubWebTests {
 
     @BeforeAll
     static void SetUp() {
-        SetConfig("https://github.com");
+        SetConfig("https://github.com", false);
     }
 
     @Test
