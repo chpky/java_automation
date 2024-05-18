@@ -1,8 +1,8 @@
-package examples;
+package com.github;
 
 import com.codeborne.selenide.selector.ByAttribute;
+import com.demoQA.practiceForm.utils.TestBaseDemoQA;
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -10,15 +10,9 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static utils.TestConfig.SetConfig;
 
 
-public class GithubWebTests {
-
-    @BeforeAll
-    static void SetUp() {
-        SetConfig("https://github.com");
-    }
+public class GithubWebTests extends TestBaseDemoQA {
 
     @Test
     void Validation() {

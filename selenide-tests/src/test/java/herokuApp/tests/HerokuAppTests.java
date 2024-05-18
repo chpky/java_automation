@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.Selenide.*;
-import static utils.TestConfig.SetConfig;
+import static com.demoQA.practiceForm.utils.TestBaseDemoQA.SetConfig;
 
 public class HerokuAppTests {
 
     @BeforeAll
     static void SetUp() {
-        SetConfig("https://the-internet.herokuapp.com");
+        SetConfig("https://the-internet.herokuapp.com", false);
     }
 
     @Test

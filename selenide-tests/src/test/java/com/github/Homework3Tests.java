@@ -1,20 +1,12 @@
-package examples;
+package com.github;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import com.demoQA.practiceForm.utils.TestBaseDemoQA;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Homework3Tests {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://github.com";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-    }
+public class Homework3Tests extends TestBaseDemoQA {
 
     @Test
     void SoftAssertionsExistTest() {
