@@ -30,6 +30,5 @@ public class TextBoxTests extends TestBaseDemoQA {
                 text(formData.getPermanentAddress())
         );
     }
-
 }
 

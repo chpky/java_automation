@@ -1,11 +1,18 @@
 package com.demoQA.practiceForm.pages;
 
+import com.demoQA.practiceForm.pages.components.CalendarComponent;
+import com.demoQA.practiceForm.pages.components.RegistrationResultModal;
+import com.demoQA.practiceForm.utils.TestBaseDemoQA;
+
 import java.util.HashMap;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormPage {
+public class PracticeFormPage extends TestBaseDemoQA {
+    static CalendarComponent calendar = new CalendarComponent();
+    RegistrationResultModal modal = new RegistrationResultModal();
 
     public static String submittedFormSelector = ".modal-body";
     public static String closeFormBut = "#closeLargeModal";
@@ -28,36 +35,47 @@ public class PracticeFormPage {
         public String getFirstName() {
             return firstName;
         }
+
         public String getLastName() {
             return lastName;
         }
+
         public String getEmail() {
             return email;
         }
+
         public String getNumber() {
             return number;
         }
+
         public String getDay() {
             return day;
         }
+
         public String getMonth() {
             return month;
         }
+
         public String getYear() {
             return year;
         }
+
         public String getSubjects() {
             return subjects;
         }
+
         public String getUploadFile() {
             return uploadFile;
         }
+
         public String getAddress() {
             return address;
         }
+
         public String getState() {
             return state;
         }
+
         public String getCity() {
             return city;
         }
@@ -89,7 +107,12 @@ public class PracticeFormPage {
         }
     }
 
-    public static void fillForm(FormData formData) {
+    public PracticeFormPage openPage() {
+        openPage("/automation-practice-form");
+        return this;
+    }
+
+    public PracticeFormPage fillForm(FormData formData) {
         setValue("#firstName", formData.getFirstName());
         setValue("#lastName", formData.getLastName());
         setValue("#userEmail", formData.getEmail());
@@ -103,6 +126,7 @@ public class PracticeFormPage {
         selectFromDropdown("#react-select-3-input", formData.getState());
         selectFromDropdown("#react-select-4-input", formData.getCity());
         click("#submit");
+        return this;
     }
 
     private static void setValue(String selector, String value) {
@@ -115,9 +139,7 @@ public class PracticeFormPage {
 
     private static void setDateOfBirth(String day, String month, String year) {
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-dropdown-container").$(byText(month)).click();
-        $(".react-datepicker__year-dropdown-container").$(byText(year)).click();
-        $(".react-datepicker__month-container").$(byText(day)).click();
+        calendar.setDate(day, month, year);
     }
 
     private static void setSubjects(String subjects) {
@@ -125,10 +147,25 @@ public class PracticeFormPage {
     }
 
     private static void uploadFile(String selector, String filePath) {
-        $(selector).uploadFromClasspath("pictures/"+filePath);
+        $(selector).uploadFromClasspath("pictures/" + filePath);
     }
 
     private static void selectFromDropdown(String selector, String value) {
         $(selector).setValue(value).pressEnter();
+    }
+
+    public PracticeFormPage verifyModalAppears() {
+        modal.verifyModalAppears();
+        return this;
+    }
+
+    public PracticeFormPage verifyResult(String key, String value) {
+        modal.verifyResult(key, value);
+        return this;
+    }
+
+    public PracticeFormPage closeForm() {
+        $(closeFormBut).click();
+        return this;
     }
 }
