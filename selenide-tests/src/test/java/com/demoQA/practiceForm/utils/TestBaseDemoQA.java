@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBaseDemoQA {
 
-
     public static void SetConfig(String baseUrl, boolean isBrowserStayOpened) {
         Configuration.baseUrl = baseUrl;
         Configuration.pageLoadStrategy = "eager";
