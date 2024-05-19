@@ -4,17 +4,14 @@ import com.demoQA.practiceForm.pages.components.CalendarComponent;
 import com.demoQA.practiceForm.pages.components.RegistrationResultModal;
 import com.demoQA.practiceForm.utils.TestBaseDemoQA;
 
-import java.util.HashMap;
+import java.io.File;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormPage extends TestBaseDemoQA {
     static CalendarComponent calendar = new CalendarComponent();
-    RegistrationResultModal modal = new RegistrationResultModal();
+    static RegistrationResultModal modal = new RegistrationResultModal();
 
-    public static String submittedFormSelector = ".modal-body";
     public static String closeFormBut = "#closeLargeModal";
 
     public static class FormData {
@@ -27,7 +24,7 @@ public class PracticeFormPage extends TestBaseDemoQA {
         private String month;
         private String year;
         private String subjects;
-        private String uploadFile;
+        private File uploadFile;
         private String address;
         private String state;
         private String city;
@@ -64,8 +61,12 @@ public class PracticeFormPage extends TestBaseDemoQA {
             return subjects;
         }
 
-        public String getUploadFile() {
+        public File getUploadFile() {
             return uploadFile;
+        }
+
+        public String getUploadedFileName() {
+            return uploadFile.getName();
         }
 
         public String getAddress() {
@@ -88,7 +89,7 @@ public class PracticeFormPage extends TestBaseDemoQA {
                         String month,
                         String year,
                         String subjects,
-                        String uploadFile,
+                        File uploadFile,
                         String address,
                         String state,
                         String city) {
@@ -112,7 +113,7 @@ public class PracticeFormPage extends TestBaseDemoQA {
         return this;
     }
 
-    public PracticeFormPage fillForm(FormData formData) {
+    public void fillForm(FormData formData) {
         setValue("#firstName", formData.getFirstName());
         setValue("#lastName", formData.getLastName());
         setValue("#userEmail", formData.getEmail());
@@ -121,12 +122,11 @@ public class PracticeFormPage extends TestBaseDemoQA {
         setDateOfBirth(formData.getDay(), formData.getMonth(), formData.getYear());
         setSubjects(formData.getSubjects());
         click("[for=hobbies-checkbox-1]");
-        uploadFile("#uploadPicture", formData.getUploadFile());
+        uploadFile(formData.getUploadFile());
         setValue("#currentAddress", formData.getAddress());
         selectFromDropdown("#react-select-3-input", formData.getState());
         selectFromDropdown("#react-select-4-input", formData.getCity());
         click("#submit");
-        return this;
     }
 
     private static void setValue(String selector, String value) {
@@ -146,8 +146,8 @@ public class PracticeFormPage extends TestBaseDemoQA {
         $("#subjectsInput").setValue(subjects).pressEnter();
     }
 
-    private static void uploadFile(String selector, String filePath) {
-        $(selector).uploadFromClasspath("pictures/" + filePath);
+    private static void uploadFile(File file) {
+        $("#uploadPicture").uploadFile(file);
     }
 
     private static void selectFromDropdown(String selector, String value) {
@@ -164,8 +164,7 @@ public class PracticeFormPage extends TestBaseDemoQA {
         return this;
     }
 
-    public PracticeFormPage closeForm() {
+    public void closeForm() {
         $(closeFormBut).click();
-        return this;
     }
 }

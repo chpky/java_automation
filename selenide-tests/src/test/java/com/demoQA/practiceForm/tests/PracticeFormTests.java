@@ -1,27 +1,39 @@
 package com.demoQA.practiceForm.tests;
 
 import com.demoQA.practiceForm.pages.PracticeFormPage;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.demoQA.practiceForm.utils.TestBaseDemoQA;
 
+
 import static com.demoQA.practiceForm.pages.PracticeFormPage.*;
+import static com.demoQA.practiceForm.utils.RandomDataGenerator.*;
 
 public class PracticeFormTests extends TestBaseDemoQA {
-    PracticeFormPage practiceFormPage = new PracticeFormPage();
-    FormData formData = new FormData(
-            "Yaroslav",
-            "Radzievskiy",
-            "auto@test.qa",
-            "8005553535",
-            "13",
-            "March",
-            "1980",
-            "Computer Science",
-            "1.png",
-            "Moscow, Mira st. 4",
-            "NCR",
-            "Noida"
-    );
+
+    String randomState = getRandomState();
+    String randomCity = getRandomCity(randomState);
+    private PracticeFormPage practiceFormPage;
+    private FormData formData;
+    @BeforeEach
+    public void prepareTestData() {
+        practiceFormPage = new PracticeFormPage();
+        formData = new FormData(
+                getRandomFirstName(),
+                getRandomLastName(),
+                getRandomEmail(),
+                getRandomPhoneNumber(),
+                getRandomDay(),
+                getRandomMonth(),
+                getRandomYear(),
+                "Computer Science",
+                getRandomPngFile(),
+                getRandomAddress(),
+                randomState,
+                randomCity
+        );
+    }
 
     @Test
     void formValidation() {
@@ -34,9 +46,14 @@ public class PracticeFormTests extends TestBaseDemoQA {
                 .verifyResult("Date of Birth", formData.getDay() + " " + formData.getMonth() + "," + formData.getYear())
                 .verifyResult("Subjects", formData.getSubjects())
                 .verifyResult("Hobbies", "Sports")
-                .verifyResult("Picture", formData.getUploadFile())
+                .verifyResult("Picture", formData.getUploadedFileName())
                 .verifyResult("Address", formData.getAddress())
                 .verifyResult("State and City", formData.getState() + " " + formData.getCity())
                 .closeForm();
+    }
+
+    @AfterEach
+    public void cleanupGeneratedFiles() {
+        deleteFile();
     }
 }
