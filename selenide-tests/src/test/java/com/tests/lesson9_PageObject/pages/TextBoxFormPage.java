@@ -1,4 +1,4 @@
-package com.demoQA.practiceForm.pages;
+package com.tests.lesson9_PageObject.pages;
 
 import static com.codeborne.selenide.Selenide.$;
 

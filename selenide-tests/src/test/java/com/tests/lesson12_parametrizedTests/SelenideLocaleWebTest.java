@@ -1,6 +1,7 @@
-package com.tests;
+package com.tests.lesson12_parametrizedTests;
 
 import com.codeborne.selenide.Selenide;
+import com.tests.data.BaseTest;
 import com.tests.data.Locale;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;

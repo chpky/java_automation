@@ -1,4 +1,4 @@
-package com.demoQA.practiceForm.utils;
+package com.tests.lesson9_PageObject.utils;
 
 import com.github.javafaker.Faker;
 

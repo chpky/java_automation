@@ -1,11 +1,9 @@
-package com.demoQA.practiceForm.utils;
+package com.tests.data;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 
-import static com.codeborne.selenide.Selenide.open;
-
-public class TestBaseDemoQA {
+public class BaseTest {
 
     public static void SetConfig(String baseUrl, boolean isBrowserStayOpened) {
         Configuration.baseUrl = baseUrl;
@@ -14,12 +12,8 @@ public class TestBaseDemoQA {
         Configuration.holdBrowserOpen = isBrowserStayOpened;
     }
 
-    public void openPage(String pageRoute) {
-        open(pageRoute);
-    }
-
     @BeforeAll
     static void SetUp() {
-        SetConfig("https://demoqa.com", false);
+        SetConfig("https://google.com", false);
     }
 }
