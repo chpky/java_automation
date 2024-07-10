@@ -1,4 +1,4 @@
-package herokuApp.tests;
+package com.tests.lesson3_selenideTests;
 
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.Selenide.*;
-import static com.demoQA.practiceForm.utils.TestBaseDemoQA.SetConfig;
+import static com.tests.lesson9_PageObject.utils.TestBaseDemoQA.SetConfig;
 
 public class HerokuAppTests {
 

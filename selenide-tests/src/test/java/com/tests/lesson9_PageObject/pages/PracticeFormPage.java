@@ -1,8 +1,8 @@
-package com.demoQA.practiceForm.pages;
+package com.tests.lesson9_PageObject.pages;
 
-import com.demoQA.practiceForm.pages.components.CalendarComponent;
-import com.demoQA.practiceForm.pages.components.RegistrationResultModal;
-import com.demoQA.practiceForm.utils.TestBaseDemoQA;
+import com.tests.lesson9_PageObject.pages.components.CalendarComponent;
+import com.tests.lesson9_PageObject.pages.components.RegistrationResultModal;
+import com.tests.lesson9_PageObject.utils.TestBaseDemoQA;
 
 import java.io.File;
 

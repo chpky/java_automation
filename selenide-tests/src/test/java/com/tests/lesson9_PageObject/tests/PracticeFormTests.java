@@ -1,35 +1,32 @@
-package com.demoQA.practiceForm.tests;
+package com.tests.lesson9_PageObject.tests;
 
-import com.demoQA.practiceForm.pages.PracticeFormPage;
+import com.tests.lesson9_PageObject.pages.PracticeFormPage;
+import com.tests.lesson9_PageObject.utils.RandomDataGenerator;
+import com.tests.lesson9_PageObject.utils.TestBaseDemoQA;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.demoQA.practiceForm.utils.TestBaseDemoQA;
-
-
-import static com.demoQA.practiceForm.pages.PracticeFormPage.*;
-import static com.demoQA.practiceForm.utils.RandomDataGenerator.*;
 
 public class PracticeFormTests extends TestBaseDemoQA {
 
-    String randomState = getRandomState();
-    String randomCity = getRandomCity(randomState);
+    String randomState = RandomDataGenerator.getRandomState();
+    String randomCity = RandomDataGenerator.getRandomCity(randomState);
     private PracticeFormPage practiceFormPage;
-    private FormData formData;
+    private PracticeFormPage.FormData formData;
     @BeforeEach
     public void prepareTestData() {
         practiceFormPage = new PracticeFormPage();
-        formData = new FormData(
-                getRandomFirstName(),
-                getRandomLastName(),
-                getRandomEmail(),
-                getRandomPhoneNumber(),
-                getRandomDay(),
-                getRandomMonth(),
-                getRandomYear(),
+        formData = new PracticeFormPage.FormData(
+                RandomDataGenerator.getRandomFirstName(),
+                RandomDataGenerator.getRandomLastName(),
+                RandomDataGenerator.getRandomEmail(),
+                RandomDataGenerator.getRandomPhoneNumber(),
+                RandomDataGenerator.getRandomDay(),
+                RandomDataGenerator.getRandomMonth(),
+                RandomDataGenerator.getRandomYear(),
                 "Computer Science",
-                getRandomPngFile(),
-                getRandomAddress(),
+                RandomDataGenerator.getRandomPngFile(),
+                RandomDataGenerator.getRandomAddress(),
                 randomState,
                 randomCity
         );
@@ -54,6 +51,6 @@ public class PracticeFormTests extends TestBaseDemoQA {
 
     @AfterEach
     public void cleanupGeneratedFiles() {
-        deleteFile();
+        RandomDataGenerator.deleteFile();
     }
 }

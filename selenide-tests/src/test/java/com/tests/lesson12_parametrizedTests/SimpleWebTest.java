@@ -1,7 +1,8 @@
-package com.tests;
+package com.tests.lesson12_parametrizedTests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import com.tests.data.Blocker;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

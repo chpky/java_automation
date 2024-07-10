@@ -1,4 +1,4 @@
-package com.demoQA.practiceForm.pages.components;
+package com.tests.lesson9_PageObject.pages.components;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;

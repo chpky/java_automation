@@ -1,6 +1,6 @@
-package com.github;
+package com.tests.lesson3_selenideTests;
 
-import com.demoQA.practiceForm.utils.TestBaseDemoQA;
+import com.tests.lesson9_PageObject.utils.TestBaseDemoQA;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;

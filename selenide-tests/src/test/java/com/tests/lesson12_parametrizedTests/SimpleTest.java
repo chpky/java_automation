@@ -1,4 +1,4 @@
-package com.tests;
+package com.tests.lesson12_parametrizedTests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
