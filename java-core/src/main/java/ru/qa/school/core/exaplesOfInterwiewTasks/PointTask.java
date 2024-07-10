@@ -1,4 +1,4 @@
-package ru.qa.school.core;
+package ru.qa.school.core.exaplesOfInterwiewTasks;
 
 public class PointTask {
 

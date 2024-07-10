@@ -1,0 +1,43 @@
+0) TEST DATA: [
+    ["Selenide", "Selenide: лаконичные и стабильные UI тесты на Java"]
+    ["Allure Framework", "Allure Report — Open-source HTML test automation report tool"]
+]
+1) TITLE: В первом результате выдачи для TEST_DATA[0] должен отображаться текст TEST_DATA[1]
+2) PRIORITY/SEVERITY - BLOCKER
+3) PRECONDITIONS: открыт браузер Chrome, открыта главная страница Yandex
+
+4) STEPS
+ - Вставить в поисковую строку TEST DATA[0]
+ - Нажать кнопку "Найти"
+
+5) EXPECTED RESULT
+ - На загруженной странице в первом результате отображается текст TEST_DATA[1]
+
+----------------------------------------------------------------------------------------
+
+1) TITLE: В поисковой строке должен отображаться текст "Загруженная картинка"
+2) PRIORITY/SEVERITY - BLOCKER
+3) PRECONDITIONS: открыт браузер Chrome, открыта главная страница Yandex
+
+4) STEPS
+ - загрузить файл в поиск по картинке
+
+5) EXPECTED RESULT
+ - В загруженной странице есть надпись в поисковой строке "Загруженная картинка"
+
+---------------------------------------------------------------------------------------
+
+0) TEST DATA: [
+    ["Ru", ["С чего начать?", "Док", "ЧАВО", "Блог", "Javadoc", "Пользователи", "Отзывы"]]
+    ["En", ["Quick start", "Docs", "FAQ", "Blog", "Javadoc", "Users", "Quotes"]]
+]
+1) TITLE: Для локали TEST_DATA[0] на сайте https://selenide.org/ должен отображаться список кнопок TEST_DATA[1]
+2) PRIORITY/SEVERITY - BLOCKER
+
+4) STEPS
+ - Открыть браузер Chrome
+ - Открыть сайт https://selenide.org/
+ - Выбрать локаль TEST_DATA[0]
+
+5) EXPECTED RESULT
+ - На сайте для выбранной локали должен отображаться список кнопок TEST_DATA[1]

@@ -6,13 +6,11 @@ import com.demoQA.practiceForm.utils.TestBaseDemoQA;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
 public class PracticeFormPage extends TestBaseDemoQA {
     static CalendarComponent calendar = new CalendarComponent();
     static RegistrationResultModal modal = new RegistrationResultModal();
-
-    public static String closeFormBut = "#closeLargeModal";
 
     public static class FormData {
 
@@ -165,6 +163,6 @@ public class PracticeFormPage extends TestBaseDemoQA {
     }
 
     public void closeForm() {
-        $(closeFormBut).click();
+        $("#closeLargeModal").click();
     }
 }
