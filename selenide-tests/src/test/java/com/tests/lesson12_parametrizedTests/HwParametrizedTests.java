@@ -1,5 +1,6 @@
 package com.tests.lesson12_parametrizedTests;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.tests.data.BaseTest;
 import com.tests.data.HabrLocale;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -41,5 +43,14 @@ public class HwParametrizedTests extends BaseTest {
         $(byTagAndText("label",locale.name())).click();
         $("button.tm-page-settings-form__submit").click();
         $$("nav.tm-main-menu__section-content a").shouldHave(texts(expectedBtns));
+    }
+
+    @ValueSource(strings = {"Качество", "Автоматизация", "Java"})
+    @ParameterizedTest(name = "При поиске {0} происходит редирект на статью о {0}")
+    public void wikipediaSearchTest(String searchString) {
+        Selenide.open("https://ru.wikipedia.org/");
+        $("#searchInput").setValue(searchString);
+        $("#searchButton").click();
+        $("#firstHeading span").shouldHave(Condition.text(searchString));
     }
 }
