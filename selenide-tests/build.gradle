@@ -28,4 +28,5 @@ tasks.withType(JavaCompile).configureEach {
 
 test {
     useJUnitPlatform()
+    systemProperty "allure.results.directory", file("build/custom-allure-results")
 }
