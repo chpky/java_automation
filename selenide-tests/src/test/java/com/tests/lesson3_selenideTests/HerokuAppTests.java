@@ -1,4 +1,4 @@
-package com.tests;
+package com.tests.lesson3_selenideTests;
 
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.BeforeAll;
