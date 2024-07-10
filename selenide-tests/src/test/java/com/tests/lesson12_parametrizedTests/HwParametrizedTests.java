@@ -7,6 +7,7 @@ import com.tests.data.HabrLocale;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
-import static com.codeborne.selenide.Selectors.byTagAndText;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -52,5 +53,18 @@ public class HwParametrizedTests extends BaseTest {
         $("#searchInput").setValue(searchString);
         $("#searchButton").click();
         $("#firstHeading span").shouldHave(Condition.text(searchString));
+    }
+
+    @CsvSource(value = {
+            "124,248,50%",
+            "0.1,1000,0.01%"
+    })
+    @ParameterizedTest
+    public void percentCalcTest(String firstNum, String secondNum, String result) {
+        Selenide.open("https://calculator888.ru/calculator-procentov");
+        $("#ch1_2").setValue(firstNum);
+        $("#ch2_2").setValue(secondNum);
+        $(withText("Сколько % составляет число")).$(byAttribute("value", "ОК")).click();
+        $("#itog_2").shouldHave(Condition.text(result));
     }
 }
