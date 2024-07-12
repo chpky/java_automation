@@ -81,7 +81,7 @@ public class FileParsingTest {
             JsonNode parsedJson = objectMapper.readTree(isr);
 
             Assertions.assertEquals("Dima", parsedJson.get("name").asText());
-            Assertions.assertEquals("33", parsedJson.get("33").asText());
+            Assertions.assertEquals(33, parsedJson.get("age").asInt());
         }
 
 
