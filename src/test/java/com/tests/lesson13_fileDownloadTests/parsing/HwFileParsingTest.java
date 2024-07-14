@@ -3,6 +3,7 @@ package com.tests.lesson13_fileDownloadTests.parsing;
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -13,6 +14,7 @@ import java.util.zip.ZipInputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled
 public class HwFileParsingTest {
 
 

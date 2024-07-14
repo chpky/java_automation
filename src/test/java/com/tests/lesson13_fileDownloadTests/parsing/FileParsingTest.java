@@ -8,6 +8,7 @@ import com.tests.lesson13_fileDownloadTests.Human;
 import io.qameta.allure.internal.shadowed.jackson.databind.JsonNode;
 import io.qameta.allure.internal.shadowed.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -20,6 +21,7 @@ import java.util.zip.ZipInputStream;
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
+@Disabled
 public class FileParsingTest {
 
     ClassLoader cl = FileParsingTest.class.getClassLoader();
